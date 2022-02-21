@@ -89,7 +89,7 @@ def add_student(request):
         #"student": student,
         #"student_id": student_id
     }
-    return render(request, 'hod_template/add_student_template.html', context)
+    return render(request, 'add_student_template.html', context)
 
 def add_student_save(request):
     if request.method != "POST":
@@ -130,7 +130,7 @@ def manage_student(request):
     context = {
         "students": students
     }
-    return render(request, "hod_template/manage_student_template.html", context)
+    return render(request, "manage_student_template.html", context)
 
 def edit_student(request, stu_id):
     student = Students.objects.get(id=stu_id)
@@ -147,7 +147,7 @@ def edit_student(request, stu_id):
         "programme": programme,
         "stu_id": stu_id
     }
-    return render(request, "hod_template/edit_student_template.html", context)
+    return render(request, "edit_student_template.html", context)
 
 def edit_student_save(request):
     if request.method != "POST":
@@ -207,7 +207,7 @@ def delete_student(request, stu_id):
 
 
 def add_department(request):
-    return render(request, "hod_template/add_department_template.html")
+    return render(request, "add_department_template.html")
 
 def add_department_save(request):
     if request.method != "POST":
@@ -229,7 +229,7 @@ def manage_department(request):
     context = {
         "departments": departments
     }
-    return render(request, 'hod_template/manage_department_template.html', context)
+    return render(request, 'manage_department_template.html', context)
 
 def edit_department(request, department_id):
     department = Departments.objects.get(id=department_id)
@@ -237,7 +237,7 @@ def edit_department(request, department_id):
         "department": department,
         "id": department_id
     }
-    return render(request, 'hod_template/edit_department_template.html', context)
+    return render(request, 'edit_department_template.html', context)
 
 def edit_department_save(request):
     if request.method != "POST":
@@ -271,7 +271,7 @@ def delete_department(request, department_id):
 # Status
 
 def add_status(request):
-    return render(request, "hod_template/add_status_template.html")
+    return render(request, "add_status_template.html")
 
 def add_status_save(request):
     if request.method != "POST":
@@ -293,7 +293,7 @@ def manage_status(request):
     context = {
         "status": status
     }
-    return render(request, 'hod_template/manage_status_template.html', context)
+    return render(request, 'manage_status_template.html', context)
 
 def edit_status(request, status_id):
     status = student_status.objects.get(id=status_id)
@@ -301,7 +301,7 @@ def edit_status(request, status_id):
         "status": status,
         "id": status_id
     }
-    return render(request, 'hod_template/edit_status_template.html', context)
+    return render(request, 'edit_status_template.html', context)
 
 def edit_status_save(request):
     if request.method != "POST":
@@ -335,7 +335,7 @@ def delete_status(request, status_id):
 # Intakes
 
 def add_intake(request):
-    return render(request, "hod_template/add_intake_template.html")
+    return render(request, "add_intake_template.html")
 
 def add_intake_save(request):
     if request.method != "POST":
@@ -357,7 +357,7 @@ def manage_intake(request):
     context = {
         "intakes": intakes
     }
-    return render(request, 'hod_template/manage_intake_template.html', context)
+    return render(request, 'manage_intake_template.html', context)
 
 def edit_intake(request, intake_id):
     intake = Intakes.objects.get(id=intake_id)
@@ -365,7 +365,7 @@ def edit_intake(request, intake_id):
         "intake": intake,
         "id": intake_id
     }
-    return render(request, 'hod_template/edit_intake_template.html', context)
+    return render(request, 'edit_intake_template.html', context)
 
 def edit_intake_save(request):
     if request.method != "POST":
@@ -402,7 +402,7 @@ def manage_sop_admin(request):
     context = {
         "sops": sops
     }
-    return render(request, 'hod_template/manage_sop_template.html', context)
+    return render(request, 'manage_sop_template.html', context)
 
 def edit_sop_admin(request, sop_id):
     sop = Cons.objects.get(id=sop_id)
@@ -410,7 +410,7 @@ def edit_sop_admin(request, sop_id):
         "sop": sop,
         "id": sop_id,
     }
-    return render(request, 'hod_template/edit_sop_template.html', context)
+    return render(request, 'edit_sop_template.html', context)
 
 def edit_sop_admin_save(request):
     if request.method != "POST":
@@ -480,7 +480,7 @@ class SimpleListReport(SlickReportView):
 
 
 def add_programme(request):
-    return render(request, "hod_template/add_programme_template.html")
+    return render(request, "add_programme_template.html")
 
 def add_programme_save(request):
     if request.method != "POST":
@@ -502,7 +502,7 @@ def manage_programme(request):
     context = {
         "programme": programme,
     }
-    return render(request, 'hod_template/manage_programme_template.html', context)
+    return render(request, 'manage_programme_template.html', context)
 
 def edit_programme(request, programme_id):
     programme = Programme.objects.get(id=programme_id)
@@ -510,7 +510,7 @@ def edit_programme(request, programme_id):
         "programme": programme,
         "id": programme_id
     }
-    return render(request, 'hod_template/edit_programme_template.html', context)
+    return render(request, 'edit_programme_template.html', context)
 
 def edit_programme_save(request):
     if request.method != "POST":
@@ -544,7 +544,7 @@ def delete_programme(request, programme_id):
 
 
 def add_ptype(request):
-    return render(request, "hod_template/add_ptype_template.html")
+    return render(request, "add_ptype_template.html")
 
 def add_ptype_save(request):
     if request.method != "POST":
@@ -566,7 +566,7 @@ def manage_ptype(request):
     context = {
         "ptype": ptype
     }
-    return render(request, 'hod_template/manage_ptype_template.html', context)
+    return render(request, 'manage_ptype_template.html', context)
 
 def edit_ptype(request, ptype_id):
     ptype = Paymenttype.objects.get(id=ptype_id)
@@ -574,7 +574,7 @@ def edit_ptype(request, ptype_id):
         "ptype": ptype,
         "id": ptype_id
     }
-    return render(request, 'hod_template/edit_ptype_template.html', context)
+    return render(request, 'edit_ptype_template.html', context)
 
 def edit_ptype_save(request):
     if request.method != "POST":
