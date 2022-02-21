@@ -1,0 +1,112 @@
+{% extends 'finance_template/base_template.html' %}
+
+{% block page_title %}
+    Add Reciept
+{% endblock page_title %}
+
+{% block main_content %}
+
+{% load static %}
+
+<section class="content">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Add Reciept</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <form role="form" method="POST" action="{% url 'add_reciept_save' %}">
+                        {% csrf_token %}
+
+                        
+                                {% comment %} Display Messages {% endcomment %}
+                                {% if messages %}
+                                <div class="form-group">
+                                <div class="col-12">
+                                    {% for message in messages %}
+                                    {% if message.tags == "error" %}
+                                        <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-top: 10px;">
+                                        {{ message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                    {% elif message.tags == "success" %}
+                                        <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-top: 10px;">
+                                        {{ message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                    {% endif %}
+                                    {% endfor %}
+                                </div>
+                                </div>
+                                {% endif %}
+                            
+
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label>Student Name </label>
+                                <input type="hidden" class="form-control" name="student_id" value="{{ student.id }}">
+                                <input type="text" class="form-control" name="stu_name" value="{{ student.first_name }} {{ student.last_name }}">
+                            </div>
+                            <div class="form-group">
+                                <label>Student ID </label>
+                                <input type="text" class="form-control" name="stu_id" value="{{ student.student_id }}">
+                            </div>
+                            <div class="form-group">
+                                <label>NIN </label>
+                                <input type="text" class="form-control" name="stu_nin" value="{{ student.nin }}">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Student Programme </label>
+                                <input type="text" class="form-control" name="stu_programme" value="{{ student.programme }}">
+                            </div>
+                            <div class="form-group">
+                                <label>Payment Type:</label>
+                                <select class="form-control" name="ptype">
+                                    {% for ptype in ptype %}
+                                        <option value="{{ ptype.id }}">{{ ptype.ptype_name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Amount </label>
+                                <input type="text" class="form-control" name="amount" placeholder="Enter Amount">
+                            </div>
+                            <div class="form-group">
+                                <label>Total </label>
+                                <input type="text" class="form-control" name="total" value="{{ student.totalFee }}">
+                            </div>
+                            <div class="form-group">
+                                <label>Balance </label>
+                                <input type="text" class="form-control" name="balance" placeholder="Enter Student Balance">
+                            </div>
+                            <div class="form-group">
+                                <label>Notes </label>
+                                <input type="text" class="form-control" name="notes" placeholder="Enter Notes">
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+
+                        <div class="card-footer">
+                        <button type="submit" class="btn btn-primary">Add Reciept</button>
+                        </div>
+                    </form>
+                    </div>
+                    <!-- /.card -->
+
+                </div>
+            </div>
+
+        </div><!-- /.container-fluid -->
+      </section>
+
+  {% endblock main_content %}
