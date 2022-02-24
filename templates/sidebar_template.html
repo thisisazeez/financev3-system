@@ -35,31 +35,20 @@
                 </p>
               </a>
             </li> {% endcomment %}
-
+            {% if user.is_admin or user.is_registrar2 %}
             <li class="nav-item">
-              {% url 'manage_staff' as manage_staff %}
-              {% url 'edit_staff' staff_id=id as edit_staff %}
-              <a href="{{ manage_staff }}" class="nav-link {% if request.path == manage_staff %} active {% endif %} {% if request.path == edit_staff %} active {% endif %}">
+              {% url 'register' as register %}
+              {% comment %} {% url 'edit_staff' staff_id=id as edit_staff %} {% endcomment %}
+              <a href="{{ register }}" class="nav-link {% if request.path == register %} active {% endif %} {% if request.path == edit_staff %} active {% endif %}">
                 <i class="nav-icon fas fa-chalkboard-teacher"></i>
                 <p>
-                  Manage Staffs
+                  Add user
                 </p>
               </a>
             </li>
-            
+            {% endif %}
 
-
-            <li class="nav-item">
-              {% url 'manage_finance' as manage_finance %}
-              {% url 'edit_finance' finance_id=id as edit_finance %}
-              <a href="{{ manage_finance }}" class="nav-link {% if request.path == manage_finance %} active {% endif %} {% if request.path == edit_finance %} active {% endif %}">
-                <i class="nav-icon fas fa-chalkboard-teacher"></i>
-                <p>
-                  Manage Finance
-                </p>
-              </a>
-            </li>
-
+            {% if user.is_admin or user.is_daily_report %}
             <li class="nav-item">
               {% url 'report_gen' as report_gen %}
               {% url 'edit_finance' finance_id=id as edit_finance %}
@@ -70,9 +59,10 @@
                 </p>
               </a>
             </li>
+            {% endif %}
 
 
-
+            {% if user.is_admin or user.is_expenses or user.is_expenses_report %}
             <li class="nav-item">
               {% url 'manage_sop_admin' as manage_sop_admin %}
               {% url 'edit_sop_admin' sop_id=id as edit_sop_admin %}
@@ -83,6 +73,7 @@
                 </p>
               </a>
             </li>
+            {% endif %}
             <!-- <li class="nav-item">
               {% url 'add_parent' as add_parent %}
               <a href="{{ add_parent }}" class="nav-link {% if request.path == add_parent %} active {% endif %}">
@@ -103,6 +94,7 @@
               </a>
             </li>{% endcomment %}
 
+            {% if user.is_admin or user.is_add %}
             <li class="nav-item">
               {% url 'manage_intake' as manage_intake %}
               {% url 'edit_intake' intake_id=id as edit_intake %}
@@ -191,6 +183,7 @@
                 </p>
               </a>
             </li> 
+            {% endif %}
             <!-- <li class="nav-item">
               {% url 'add_department' as add_department %}
                 <a href="{{ add_department }}" class="nav-link {% if request.path == add_department %} active {% endif %}">
